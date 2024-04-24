@@ -1,6 +1,7 @@
 ![alt text](foodlylogo-removebg-preview.png)
 
 Foodly - Smart Shopping Made Easy!
+
 Whether you're a busy parent, a health-conscious individual, or someone who loves to cook, our grocery list app is your ultimate companion for stress-free shopping and meal planning. Download now and revolutionize the way you shop for groceries!
 
 Introducing the Ultimate Grocery List App:
