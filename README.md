@@ -1,7 +1,9 @@
+![alt text](foodlylogo-removebg-preview.png)
 Foodly - Smart Shopping Made Easy!
 Whether you're a busy parent, a health-conscious individual, or someone who loves to cook, our grocery list app is your ultimate companion for stress-free shopping and meal planning. Download now and revolutionize the way you shop for groceries!
 
 Introducing the Ultimate Grocery List App:
+
 🍎 Keep Your Pantry Fresh: 
    Say goodbye to wasted food! Our app features spoilage timers for each grocery item. When the timer runs out, items automatically move to a suggested list for easy reordering, ensuring your pantry stays stocked with fresh ingredients.
 
