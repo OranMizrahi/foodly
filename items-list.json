@@ -1,0 +1,5 @@
+item_list = [
+    {"name": "Apple", "quantity": 10, "price": 0.5, "expiry_date": "2023-02-28"},
+    {"name": "Banana", "quantity": 5, "price": 0.3, "expiry_date": "2023-03-05"},
+    {"name": "Carrot", "quantity": 20, "price": 0.7, "expiry_date": "2023-03-12"}
+]
