@@ -18,3 +18,12 @@ user1 = foodly_user(
     UserName="oranmz",
     Password="123123"
 )
+
+    
+user2 = foodly_user(
+    FirstName="TEST",
+    LastName="My",
+    Email="test@gmail.com",
+    UserName="test",
+    Password="123123"
+)
