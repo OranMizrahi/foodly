@@ -1,0 +1,47 @@
+name: PostgreSQL on Push
+
+on: push
+
+jobs:
+  setup-postgres:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: 123123
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y postgresql postgresql-contrib
+        pip install -r requirements.txt
+
+    - name: Run PostgreSQL
+      run: |
+        sudo service postgresql start
+        # Your commands to interact with the database go here
+
+    - name: Wait 20 minutes
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '20m'
+
+    - name: Stop PostgreSQL
+      run: sudo service postgresql stop

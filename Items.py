@@ -1,6 +1,5 @@
 import datetime
-from Items.py import Items
-from User.py import foodly_user
+from User import foodly_user
 class Items:
     def __init__(self, ItemID, User: foodly_user, Quantity, Price, ExpiryDate):
         ItemID=ItemID

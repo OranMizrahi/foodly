@@ -1,4 +1,7 @@
 import Items
+import MySQLdb
+
+
 class foodly_user:
     def __init__(self, UserID, FirstName, LastName, Email, UserName, Password):  
         self.FirstName = FirstName
