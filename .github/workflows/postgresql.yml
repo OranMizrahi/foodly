@@ -1,4 +1,4 @@
-name: PostgreSQL on Push
+name: PostgreSQL Setup
 
 on: push
 
@@ -10,37 +10,37 @@ jobs:
         image: postgres
         env:
           POSTGRES_PASSWORD: 123123
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
         ports:
           - 5432:5432
 
     steps:
-    - name: Check out repository
-      uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
 
-    - name: Install dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y postgresql postgresql-contrib
-        
-    - name: Run PostgreSQL
-      run: |
-        sudo service postgresql start
-        # Your commands to interact with the database go here
+      - name: Install PostgreSQL client
+        run: sudo apt update && sudo apt install -y postgresql-client
 
-    - name: Wait 20 minutes
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '20m'
+      - name: Start PostgreSQL
+        run: sudo service postgresql start
 
-    - name: Stop PostgreSQL
-      run: sudo service postgresql stop
+      - name: Wait for PostgreSQL to start
+        run: |
+          timeout=30
+          while ! pg_isready -h localhost -p 5432 -q -U postgres >/dev/null 2>&1; do
+            timeout=$((timeout - 1))
+            if [ $timeout -eq 0 ]; then
+              echo "PostgreSQL did not start within 30 seconds."
+              exit 1
+            fi
+            sleep 1
+          done
+
+      # Add your commands to interact with the database here
+
+      - name: Stop PostgreSQL
+        run: sudo service postgresql stop
