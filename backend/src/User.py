@@ -48,6 +48,9 @@ class FoodlyUser:
         password = input("What is your password? ")
         return cls(user_id, first_name, last_name, email, username, password)
 
+
+
+# MySQL start here and save the data
 # Create a new user
 user = FoodlyUser.create_user()
 

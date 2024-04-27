@@ -1,0 +1,27 @@
+name: Deploy PostgreSQL to Azure
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Azure CLI
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy PostgreSQL
+        uses: Azure/postgresql@v1
+        with:
+          server-name: POSTGRESQL_SERVER_NAME
+          database-name: mydb
+          admin-user: ${{ secrets.POSTGRES_USER }}
+          admin-password: ${{ secrets.POSTGRES_PASSWORD }}
+          sql-file: data.sql

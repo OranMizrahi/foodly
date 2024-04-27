@@ -1,6 +1,4 @@
 import MySQLdb
-import uuid
-
 class MySQLDB:
     def __init__(self, host="localhost", port=3307, user="root", passwd="123123", db="foodly"):
         self.host = host
@@ -17,7 +15,7 @@ class MySQLDB:
     
     def disconnect(self):
         if self.cursor:
-            self.cursor.close()
+            self.cursor.close( )
         if self.db_connection:
             self.db_connection.close()
     
