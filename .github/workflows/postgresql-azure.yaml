@@ -20,8 +20,8 @@ jobs:
       - name: Deploy PostgreSQL
         uses: Azure/postgresql@v1
         with:
-          server-name: POSTGRESQL_SERVER_NAME
+          server-name: postgres
           database-name: mydb
           admin-user: ${{ secrets.POSTGRES_USER }}
           admin-password: ${{ secrets.POSTGRES_PASSWORD }}
-          sql-file: data.sql
+          sql-file: backend\src\data.sql
