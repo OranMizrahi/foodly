@@ -30,6 +30,14 @@ jobs:
               exit 1
             fi
           done
+      - name: check pwd and ls
+        run: |
+          ls -a
+          pwd
+      - name: execute sql
+        run: |
+          psql -h localhost -U testuser -d testdb -f backend/src/data.sql
+
       - name: Show PostgreSQL connection details
         run: |
           echo "PostgreSQL is running on localhost:5432"
