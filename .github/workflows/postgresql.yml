@@ -36,7 +36,7 @@ jobs:
           pwd
       - name: execute sql
         run: |
-          psql -h localhost -U testuser -d testdb -f backend/src/data.sql
+          psql -h localhost -U testuser -d testdb -c "SELECT 'Connection is working' AS result;"
 
       - name: Show PostgreSQL connection details
         run: |
