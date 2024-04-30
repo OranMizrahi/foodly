@@ -41,4 +41,4 @@ jobs:
           PGHOST: localhost
           PGUSER: testuser
           PGDATABASE: testdb
-          PGPASSWORD: 123123
+          PGPASSWORD: ${{ secrets.PG_PASSWORD }}
