@@ -34,9 +34,11 @@ jobs:
         run: |
           ls -a
           pwd
-
-      - name: execute sql
-        env:
-          PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
+      - name: Execute SQL
         run: |
-          psql -h localhost -U testuser -d testdb -W -c "SELECT 'Connection is working' AS result;"
+          psql -d saltcorn_test -c "SELECT 'Connection is working' AS result;"
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGDATABASE: saltcorn_test
+          PGPASSWORD: 123123
