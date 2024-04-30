@@ -13,7 +13,7 @@ jobs:
         env:
           POSTGRES_DB: testdb
           POSTGRES_USER: testuser
-          POSTGRES_PASSWORD: testpassword
+          POSTGRES_PASSWORD: 123123
         ports:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
@@ -34,13 +34,9 @@ jobs:
         run: |
           ls -a
           pwd
-      - name: execute sql
-        run: |
-          psql -h localhost -U testuser -d testdb -c "SELECT 'Connection is working' AS result;"
 
-      - name: Show PostgreSQL connection details
+      - name: execute sql
+        env:
+          PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
         run: |
-          echo "PostgreSQL is running on localhost:5432"
-          echo "Database: testdb"
-          echo "Username: testuser"
-          echo "Password: testpassword"
+          psql -h localhost -U testuser -d testdb -W -c "SELECT 'Connection is working' AS result;"
