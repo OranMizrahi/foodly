@@ -36,9 +36,9 @@ jobs:
           pwd
       - name: Execute SQL
         run: |
-          psql -d saltcorn_test -c "SELECT 'Connection is working' AS result;"
+          psql -d testdb -c "SELECT 'Connection is working' AS result;"
         env:
           PGHOST: localhost
-          PGUSER: postgres
-          PGDATABASE: saltcorn_test
+          PGUSER: testuser
+          PGDATABASE: testdb
           PGPASSWORD: 123123
