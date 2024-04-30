@@ -35,6 +35,7 @@ jobs:
           ls -a
           pwd
       - name: Execute SQL
+<<<<<<< HEAD
         run: |
           psql -d saltcorn_test -c "SELECT 'Connection is working' AS result;"
         env:
@@ -42,3 +43,10 @@ jobs:
           PGUSER: postgres
           PGDATABASE: saltcorn_test
           PGPASSWORD: 123123
+=======
+        # Connect to the PostgreSQL database and check if the connection is working
+        env:
+          pg_password: ${{ secrets.PG_PASSWORD }}
+        run: |
+          psql -h localhost -U testuser -d testdb -w -c "SELECT 'Connection is working' AS result;"
+>>>>>>> 44de34acab0c6b5891c8ac849819e3a423f7bc6e
