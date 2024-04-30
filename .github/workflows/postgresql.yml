@@ -34,9 +34,9 @@ jobs:
         run: |
           ls -a
           pwd
-
-      - name: execute sql
+      - name: Execute SQL
+        # Connect to the PostgreSQL database and check if the connection is working
         env:
-          PG_PASSWORD: ${{ secrets.PG_PASSWORD }}
+          pg_password: ${{ secrets.PG_PASSWORD }}
         run: |
-          psql -h localhost -U testuser -d testdb -W -c "SELECT 'Connection is working' AS result;"
+          psql -h localhost -U testuser -d testdb -w -c "SELECT 'Connection is working' AS result;"
