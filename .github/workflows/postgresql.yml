@@ -34,9 +34,15 @@ jobs:
         run: |
           ls -a
           pwd
+          cd ..
+          ls
+          cd ..
+          ls
+          cd .. 
+          ls
       - name: Execute SQL
         run: |
-          psql -d testdb -c "SELECT 'Connection is working' AS result;"
+          psql -d testdb -f backend/db/data.sql
         env:
           PGHOST: localhost
           PGUSER: testuser
