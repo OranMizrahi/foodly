@@ -25,4 +25,3 @@ jobs:
           admin-user: ${{ secrets.POSTGRES_USER }}
           admin-password: ${{ secrets.POSTGRES_PASSWORD }}
           sql-file: backend\src\data.sql
-if: false

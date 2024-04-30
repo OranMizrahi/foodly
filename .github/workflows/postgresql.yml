@@ -30,6 +30,11 @@ jobs:
               exit 1
             fi
           done
+          
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      # Copy the file from the repository to the workflow directory
       - name: check pwd and ls
         run: |
           ls -a
