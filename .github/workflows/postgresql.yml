@@ -30,26 +30,19 @@ jobs:
               exit 1
             fi
           done
-          
+
       - name: Checkout code
         uses: actions/checkout@v2
         
       # Copy the file from the repository to the workflow directory
-      - name: check pwd and ls
-        run: |
-          ls -a
-          pwd
-          cd ..
-          ls
-          cd ..
-          ls
-          cd .. 
-          ls
-      - name: Execute SQL
+
+      - name: Execute SQL file and print it 
         run: |
           psql -d testdb -f backend/db/data.sql
+          psql -d testdb -c "SELECT * FROM users"
         env:
           PGHOST: localhost
           PGUSER: testuser
           PGDATABASE: testdb
           PGPASSWORD: ${{ secrets.PG_PASSWORD }}
+
