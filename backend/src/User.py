@@ -1,5 +1,6 @@
 import uuid
 import mysql
+import postgres 
 
 class FoodlyUser:
     def __init__(self, user_id, first_name, last_name, email, username, password):  
@@ -40,7 +41,7 @@ class FoodlyUser:
 
     @classmethod
     def create_user(cls):
-        user_id = str(uuid.uuid4())
+        user_id = str(1)
         first_name = input("What is your name? ")
         last_name = input("What is your last name? ")
         email = input("What is your email? ")
@@ -50,9 +51,14 @@ class FoodlyUser:
 
 
 
-# MySQL start here and save the data
-# Create a new user
-user = FoodlyUser.create_user()
+
+#Postgres start here 
+
+
+user = FoodlyUser.create_user() # Creat instance of object FoodlyUser
+postgres = postgres.Postgress()
+
+# User Data format
 
 userdb = {
     "UserID": str(uuid.uuid4()),
@@ -63,12 +69,24 @@ userdb = {
     "Password": user.password
 }
 
-# Create an instance of MySQLDB
-db = mysql.MySQLDB()
-# Connect to the database
-db.connect()
-# Insert user data
-db.insert_user(userdb)
-# Disconnect from the database
-db.disconnect()
+postgres.connect()
+postgres.execute(userdb)
+#postgres.result_print()
+postgres.close()
+
+
+
+
+# MySQL start here and save the data
+# Create a new user
+#user = FoodlyUser.create_user()
+
+## Create an instance of MySQLDB
+#db = mysql.MySQLDB()
+## Connect to the database
+#db.connect()
+## Insert user data
+#db.insert_user(userdb)
+## Disconnect from the database
+#db.disconnect()
 

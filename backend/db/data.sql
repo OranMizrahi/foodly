@@ -1,13 +1,8 @@
--- Create a table named 'users'
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE foodly_user (
+    UserID UUID PRIMARY KEY,
+    FirstName VARCHAR(255) NOT NULL,
+    LastName VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    UserName VARCHAR(255) NOT NULL UNIQUE,
+    Password VARCHAR(255) NOT NULL
 );
-
--- Insert some sample data into the 'users' table
-INSERT INTO users (username, email) VALUES
-    ('user1', 'user1@example.com'),
-    ('user2', 'user2@example.com'),
-    ('user3', 'user3@example.com');
