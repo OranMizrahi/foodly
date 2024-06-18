@@ -1,5 +1,4 @@
 import uuid
-import mysql
 import postgres 
 
 class FoodlyUser:

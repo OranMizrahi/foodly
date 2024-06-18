@@ -1,18 +1,20 @@
 import psycopg2
 
 class Postgress:
-    def __init__(self, db_port=5435, db_name="testdb", db_user="testuser", db_password="123123"):
+    def __init__(self, db_port=5432, db_name="foodly_db", db_user="postgres", db_password="OFsJQR9PVR", db_host="localhost"):
         self.db_port = db_port
         self.db_name = db_name
         self.db_user = db_user
         self.db_password = db_password
+        self.db_host = db_host
     
     def connect(self):
         self.db_connection = psycopg2.connect(
             port=self.db_port,
             dbname=self.db_name,
             user=self.db_user,
-            password=self.db_password
+            password=self.db_password,
+            host=self.db_host
         )
         self.cursor = self.db_connection.cursor()
 
